@@ -1,0 +1,1 @@
+{"components":{"root":"front","name":"components","tag":"","type":"","description":"","versions":{"1.0.0":["all.js","table.html","table.js"]},"stable":[]},"libs":{"root":"front","name":"libs","tag":"","type":"","description":"","versions":{"1.0.0":["backbone.js","jquery.js","mustache.js","underscore.js","util.js"]},"stable":[]},"ignore-template":""}

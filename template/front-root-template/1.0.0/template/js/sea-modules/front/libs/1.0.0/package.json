@@ -1,0 +1,11 @@
+{"root":"front","name":"libs","version":"1.0.0"
+
+, "dependencies": {
+        "$": "front/libs/1.0.0/jquery.js",
+        "_": "front/libs/1.0.0/underscore.js",
+        
+    },
+    "output": {
+        "*.js": "."
+    }
+}
