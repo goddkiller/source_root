@@ -9,5 +9,5 @@ seajs.config({
 		'components' : 'front/components/1.0.0/all.js',
 		'zTree' : 'front/libs/1.0.0/zTree/jquery.ztree.all-3.4.min.js'
 	},
-	preload: ['seajs/plugin-text']
+	preload: ['seajs/plugin-text','seajs/plugin-component']
 });

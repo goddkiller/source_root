@@ -761,7 +761,20 @@ seajs._config = {
 
   Module.prototype._use = function(ids, callback) {
     util.isString(ids) && (ids = [ids])
+
     var uris = resolve(ids, this.uri)
+    
+
+    for (var i = 0; i< ids.length; i++) {
+
+      if (ids[i] == "seajs/plugin-component") {
+        var uri = this.uri
+        seajs.root = Module._resolve("./");
+        document.write("<script src='" + uris[i] + "''></script>");
+        uri[i] = "";   
+      }  
+    }
+
 
     this._load(uris, function() {
       // Loads preload files introduced in modules before compiling.
@@ -1215,10 +1228,10 @@ seajs._config = {
 
   seajs.use = function(ids, callback) {
     // Loads preload modules before all other modules.
+    seajs.usedIds = ids;
     preload(function() {
       globalModule._use(ids, callback)
     })
-
     // Chain
     return seajs
   }
