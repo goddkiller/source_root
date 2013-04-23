@@ -6,8 +6,11 @@ seajs.config({
 		'_b' : 'front/libs/1.0.0/backbone.js',
 		'bootstrap' : 'front/libs/1.0.0/bootstrap/js/bootstrap.min.js',
 		'chosen' : 'front/libs/1.0.0/chosen/chosen.jquery.js',
-		'components' : 'front/components/1.0.0/all.js',
-		'zTree' : 'front/libs/1.0.0/zTree/jquery.ztree.all-3.4.min.js'
+		
+		'table' : 'front/components/1.0.0/table/table.js',
+		'datepicker' : 'front/components/1.0.0/datepicker/js/datepicker.js',
+		'zTree' : 'front/libs/1.0.0/zTree/jquery.ztree.all-3.4.min.js',
+		'components' : 'front/components/1.0.0/all.js'
 	},
 	preload: ['seajs/plugin-text','seajs/plugin-component']
 });

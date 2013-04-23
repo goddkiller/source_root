@@ -4,6 +4,9 @@
 
 define(function(require, exports, module) {
 	var tableTpl = require("./table.html");
+
+	window.Mustache = window._t = require('_t');
+	require("_b");
 	var Model =  Backbone.Model.extend({
 		getData : function () {
 			var json = this.toJSON();
@@ -13,12 +16,12 @@ define(function(require, exports, module) {
 			_.each(json.fields, function (field, i) {
 				json.head[i] = json.headMap[field];
 			});
-				
+			var formatter = json.formatter || this.formatter || {};
+
 			_.each(json.itemList, function (item, j) {
 				var tmp_item = [];
-
 				_.each(json.fields, function (field, i) {
-					var format = othis.formatter[field];
+					var format = formatter[field];
 					tmp_item.push(format ? format(item[field], field, item, i, j) : item[field]);
 				});
 				itemList.push(tmp_item);	
@@ -47,7 +50,6 @@ define(function(require, exports, module) {
 			json.itemList = itemList;
 			return json;
 		},
-		formatter : {},
 		initialize : function () {
 		}
 	})
@@ -62,11 +64,16 @@ define(function(require, exports, module) {
 	    },
 	
 	    initialize: function() {
+	    	this.options.template && (this.template = this.options.template);
 	        this.model.on('change', this.render, this);
+	        this.model.on('change:pageNum', this._goPage, this);
 	        this.render();
 	    },
 	
-	    render: function() {
+		_goPage : function () {
+			this.model.fetch();
+		},
+	    render: function(model, name) {
 	        $(this.el).html(_t.render(this.template, this.model.getData()));
 	        return this;
 	    },
@@ -75,7 +82,8 @@ define(function(require, exports, module) {
 	    	evt.preventDefault();
 	    	var el = $(evt.target);
 	    	var pageNum = el.attr("data");
-	    	this.model.pageNum = pageNum;
+	    	this.model.set("pageNum", pageNum, {silent:true});
+	    	// this.model.pageNum = pageNum;
 	    	this.model.fetch();
 	    }
 	});
