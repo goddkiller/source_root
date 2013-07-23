@@ -1,7 +1,0 @@
-{
-  "name": "module-src-template",
-  "root": "template",
-  "version": "1.1.0",
-  "description": "module's source template",
-  "type": "template"
-}

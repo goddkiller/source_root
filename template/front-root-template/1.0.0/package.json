@@ -1,8 +1,0 @@
-{
-  "name": "front-root-template",
-  "root": "template",
-  "version": "1.0.0",
-  "description": "front end's root template",
-  "type": "template",
-  "ignore-template" : ["html$"]
-}
